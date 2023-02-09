@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { AddCategory } from './components/AddCategory';
+import { AddCategory, GifGrid } from './components';
 // import React from 'react'
 
 export const GifExpertApp = () => {
 
-    const [categories, setCategories] = useState(['Programacion','Dragon Ball'])
+    const [categories, setCategories] = useState(['Programacion'])
 
-    const onAddCategory = ( onNewCategory ) =>{
-        console.log(onNewCategory);
-        setCategories([ onNewCategory, ...categories ]);
+    const onAddCategory = ( newCategory ) =>{
+        if( categories.includes(newCategory)) return;
+        setCategories([ newCategory, ...categories ]);
         //setCategories(cat => [...cat,'Valorant'] );
     }
 
@@ -19,15 +19,15 @@ export const GifExpertApp = () => {
         <AddCategory 
             //setCategories={ setCategories}{/*PROPIEDAD QUE HACE REFERENCIA A UNA FUNCION del padre se pasa al hijo*/}
             onNewCategory = { event => onAddCategory(event) } //esto es una propiedad
+
         /> 
-        <ol>
             {
-                categories.map(category => {
-                    return <li key={category}>{category}</li>
-                })
+                categories.map((category) => (
+                    <GifGrid 
+                        key={category} 
+                        category={category}/>
+                    ))
             }
-           
-        </ol>
     </>
   )
 }
