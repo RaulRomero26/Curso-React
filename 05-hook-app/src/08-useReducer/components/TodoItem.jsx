@@ -1,5 +1,5 @@
 
-export const TodoItem = ({todo}) => {
+export const TodoItem = ({todo,onDeleteTodo}) => {
 
   return (
     <>
@@ -7,6 +7,7 @@ export const TodoItem = ({todo}) => {
             <span className="align-self-center">{todo.description}</span>
             <button
                 className="btn btn-danger"
+                onClick={() => onDeleteTodo(todo.id)}
             >
                 Borrar
             </button>
