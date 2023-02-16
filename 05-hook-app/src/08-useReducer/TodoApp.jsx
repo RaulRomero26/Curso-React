@@ -1,15 +1,17 @@
 import { useReducer } from "react"
+import { TodoAdd } from "./components/TodoAdd"
+import { TodoList } from "./components/TodoList"
 import { todoReducer } from "./todoReducer"
 
 const initialState = [
     {
         id: new Date().getTime(),
-        desciption: 'Recolectar la piedra del alma',
+        description: 'Recolectar la piedra del alma',
         done: false,
     },
     {
         id: new Date().getTime() * 3,
-        desciption: 'Recolectar la piedra del poder',
+        description: 'Recolectar la piedra del poder',
         done: false,
     },
 ]
@@ -20,7 +22,11 @@ export const TodoApp = () => {
     const [ todos , dispatch] = useReducer( todoReducer, initialState)
 
     const handleNewTodo = (todo) => {
-        console.log({todo});
+        const action = {
+            type: '[TODO] Add Todo',
+            payload: todo
+        }
+        dispatch( action );
     }
     return (
     <>
@@ -29,41 +35,14 @@ export const TodoApp = () => {
 
         <div className="row">
             <div className="col-7">
-                {/* todo list */}
-                <ul className="list-group">
-                    {/* todo item */}
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="align-self-center">item1</span> 
-                        <button
-                            className="btn btn-danger"
-                        >
-                            Borrar
-                        </button>
-                    </li>
-                     {/* todo item */}
-                </ul>
-                {/* fin todo list */}
+                <TodoList todos={todos}/>
             </div>
             <div className="col-5">
                 
                <h4>Agregar TODO</h4>
                <hr />
-               {/* todo add onNewTodo( todo )*/}
-               {/* {id: new Date(),..,description, done} */}
-               <form>
-                    <input 
-                        type="text"
-                        placeholder="¿Que hay que hacer?"
-                        className="form-control"
-                    />
-                    <button 
-                        type="submit"
-                        className="btn btn-primary mt-2"
-                    >
-                        AgregarTodo
-                    </button>
-               </form>
-               {/* fin todo add */}
+            
+                <TodoAdd onNewTodo={ handleNewTodo }/>
             </div>
         </div>
 
