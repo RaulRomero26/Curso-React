@@ -33,7 +33,7 @@ describe('Pruebas en el <HomePage />', () => {
         
         const preTag = screen.getByLabelText('pre')
         expect(preTag.innerHTML).toContain(user.name); 
-        expect(preTag.innerHTML).toContain(user.id.toString()); //test comment
+        expect(preTag.innerHTML).toContain(user.id.toString()); 
      })
 
  })
