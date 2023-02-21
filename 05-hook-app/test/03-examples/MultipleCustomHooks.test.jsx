@@ -3,8 +3,8 @@ import { MultipleCustomHooks } from "../../src/03-Examples"
 import { useFetch } from "../../src/hooks/useFetch"
 import { useCounter } from "../../src/hooks/useCounter"
 
-jest.mock('../../../src/hooks/useFetch');
-jest.mock('../../../src/hooks/useCounter');
+jest.mock('../../src/hooks/useFetch');
+jest.mock('../../src/hooks/useCounter');
 
 describe('Pruebas en <MultipleCustomHooks /> ', () => { 
 
