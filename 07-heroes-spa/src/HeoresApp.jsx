@@ -1,9 +1,10 @@
+import { AppRouter } from "./router/AppRouter"
 
 
 const HeoresApp = () => {
   return (
     <>
-        <h1>heroees app</h1>
+        <AppRouter/>
     </>
   )
 }
