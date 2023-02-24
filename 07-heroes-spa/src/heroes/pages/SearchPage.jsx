@@ -18,7 +18,7 @@ export const SearchPage = () => {
   console.log({heroes});
 
   const {searchText, onInputChange} = useForm({
-    searchText: ''
+    searchText: q
   })   
   
   const onSearchSubmit = (event) => {
@@ -60,9 +60,10 @@ export const SearchPage = () => {
             <div className="alert alert-primary">Search a hero</div>
             <div className="alert alert-danger">No hero with <b>{q}</b></div>
             {
-              heroes.map( hero => {
-                <HeroCard key={hero.id} {...hero} />
-              })
+              
+              heroes.map( hero => 
+                  <HeroCard key={hero.id} {...hero} />
+               )
             }
 
           </div>
