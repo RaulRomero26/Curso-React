@@ -5,11 +5,13 @@ import { AuthContext } from '../../auth/context/AuthContext';
 
 export const Navbar = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user,logout} = useContext(AuthContext)
 
     const navigate = useNavigate();
 
     const onLogout = () =>{
+        logout();//esta funcion viene del contexto vacio el local strage y elimino el usuario del
+        //contexto pasando el estado a false
         navigate('/login',{
             replace: true
         });
