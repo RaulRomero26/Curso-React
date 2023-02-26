@@ -5,13 +5,15 @@ import { AuthContext } from '../context/AuthContext';
 export const LoginPage = () => {
 
 	const {login} = useContext(AuthContext) //pides el contexto en este caso el del auth
-
 	const navigate = useNavigate();
 
 	const onLogin = ()=> {
+		const lasthPath = localStorage.getItem('lastPath') || '/';
 		//realizas el logeo y despues rediriges
 		login('Raul Romero')//en este ejemplo solo pide el nombre aca se tomarian los values del form
-		navigate("/", { options: { replace: true }})
+		navigate(lasthPath,{
+			replace: true
+		})
 	}
 
   return (
