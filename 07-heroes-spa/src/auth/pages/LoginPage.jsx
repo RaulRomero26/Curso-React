@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext';
 
 export const LoginPage = () => {
 
+	const {login} = useContext(AuthContext) //pides el contexto en este caso el del auth
+
 	const navigate = useNavigate();
 
-	const onLogin = ()=> navigate("/", { options: { replace: true }})
+	const onLogin = ()=> {
+		//realizas el logeo y despues rediriges
+		login('Raul Romero')//en este ejemplo solo pide el nombre aca se tomarian los values del form
+		navigate("/", { options: { replace: true }})
+	}
 
   return (
     <>
