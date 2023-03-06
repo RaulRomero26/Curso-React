@@ -7,9 +7,9 @@ import { Button, Grid, Link, TextField, Typography } from '@mui/material'
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
 import { useDispatch } from 'react-redux';
+import { checkingAuthentication } from '../../store/auth/thunks';
 
 export const LoginPage = () => {
-
   const dispatch = useDispatch();
 
   const {email,password, onInputChange} = useForm({
