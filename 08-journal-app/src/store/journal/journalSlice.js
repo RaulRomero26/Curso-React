@@ -1,15 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
 
-}
+export const journalSlice = createSlice({
+  name: 'journal',
+  initialState: {
+    isSaving: true,
+    messagedSaved: '',
+    notes: [],
+    active: null
+  },
+  reducers: {
+    addNewEmptyNote: (state,action) => {
 
-const journalSlice = createSlice({
-  name: second,
-  initialState,
-  reducers: {}
+    },
+    setActiveNote: (state,action) => {
+
+    },
+    setNotes: (state,action) => {
+
+    },
+    setSaving: (state) => {
+
+    },
+    updateNote: (state, action) => {
+
+    },
+    deleteNoteByiD: (state, action) => {
+
+    }
+  }
 });
 
-export const {} = journalSlice.actions
+export const {addNewEmptyNote,setActiveNote,setNotes,setSaving
+,updateNote,deleteNoteByiD} = journalSlice.actions
 
 export default journalSlice.reducer
