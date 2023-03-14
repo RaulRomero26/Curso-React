@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveNote, startSaveNote } from '../../store/journal';
+import { setActiveNote, startSaveNote, startUploadingFiles } from '../../store/journal';
 
 import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
@@ -43,8 +43,7 @@ export const NoteView = () => {
 
     const onFileInputChange = ({target}) => {
        if(target.files == 0) return;
-        console.log('subiendo archivos')
-       //dispatch(startUploadingFiles(target.files))
+       dispatch(startUploadingFiles(target.files))
     }
 
   return (
