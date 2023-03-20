@@ -1,9 +1,12 @@
-import { addHours } from "date-fns";
+import { addHours, differenceInSeconds } from "date-fns";
 import { useState } from "react";
 
 import Modal from "react-modal"
-import DatePicker from "react-datepicker";
+import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import es from 'date-fns/locale/es';
+registerLocale('es', es)
 
 const customStyles = {
     content: {
@@ -51,6 +54,21 @@ export const CalendarModal = () => {
         setIsOpen(false)
     }
 
+    const onSubmit = (event) => {
+        event.preventDefault();
+
+        const difference = differenceInSeconds(formValues.end,formValues.start)
+        
+        if(isNaN(difference) || difference <=0 ){
+            console.log('Error en fechas');
+            return;
+        }
+
+        if(formValues.title.length <=0) return;
+
+        console.log(formValues);
+
+    }
 
     return (
         <Modal
@@ -63,7 +81,7 @@ export const CalendarModal = () => {
         >
             <h1> Nuevo evento </h1>
             <hr />
-            <form className="container">
+            <form className="container" onSubmit={onSubmit}>
 
                 <div className="form-group mb-2">
                     <label>Fecha y hora inicio</label>
@@ -72,6 +90,9 @@ export const CalendarModal = () => {
                         onChange={(event)=> onDateChange(event,'start')}
                         className="form-control"
                         dateFormat="Pp"
+                        showTimeSelect
+                        locale="es"
+                        timeCaption="Hora"
                     />
                 </div>
 
@@ -83,6 +104,9 @@ export const CalendarModal = () => {
                         onChange={(event)=> onDateChange(event,'end')}
                         className="form-control"
                         dateFormat="Pp"
+                        showTimeSelect
+                        locale="es"
+                        timeCaption="Hora"
                     />
                 </div>
 
