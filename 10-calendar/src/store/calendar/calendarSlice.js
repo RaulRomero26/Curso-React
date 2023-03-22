@@ -23,11 +23,16 @@ export const calendarSlice = createSlice({
     ],
     activeEvent: null
   },
-  reducers: {
+  reducers: {//aca recuerda el paylod lo estas desestructurando de el objeto action
 	onSetActiveEvent: (state,{payload}) => {
 		state.activeEvent = payload;
+	},
+	onAddNewEvent: (state,{payload}) => {
+		console.log('llega el payload ',payload);
+		state.events.push(payload)
+		state.activeEvent = null;
 	}
   }
 });
 
-export const {onSetActiveEvent} = calendarSlice.actions
+export const {onSetActiveEvent,onAddNewEvent} = calendarSlice.actions
