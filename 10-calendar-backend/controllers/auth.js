@@ -86,11 +86,16 @@ const loginUsuario = async(req,res = response)=> {
    
 }
 
-const revalidarToken = (req,res = response)=> {
-   
+const revalidarToken = async (req,res = response)=> {
+    //como desde el miidelware modificas el req aca ya tienes la info 
+    const {uid,name} = req
+   //regenerando un token
+    const token = await generarJWT(uid,name);
     res.json({
         ok:true,
-        msg: 'renew'
+        uid,
+        name,
+        token
     })
 }
 
